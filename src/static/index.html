@@ -14,11 +14,34 @@
           <h1>Slalom Capabilities Management</h1>
           <h2>Consulting Expertise Platform</h2>
         </div>
+        <div class="header-actions">
+          <span id="user-identity" class="hidden"></span>
+          <button id="login-button" type="button">Sign in</button>
+          <button id="logout-button" class="hidden" type="button">Sign out</button>
+        </div>
       </div>
     </header>
 
+    <dialog id="auth-dialog" aria-labelledby="auth-title">
+      <form id="login-form">
+        <h2 id="auth-title">Sign in</h2>
+        <p>Use your provisioned Slalom account.</p>
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" autocomplete="username" required />
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" autocomplete="current-password" required />
+        <p id="login-error" class="error hidden" role="alert"></p>
+        <button type="submit">Sign in</button>
+        <small>Need access? Ask a practice lead to provision your account.</small>
+      </form>
+    </dialog>
+
     <main>
-      <section id="capabilities-container">
+      <section id="report-container" class="auth-required lead-only hidden">
+        <h3>Practice Area Summary</h3>
+        <div id="capability-report"></div>
+      </section>
+      <section id="capabilities-container" class="auth-required hidden">
         <h3>Available Capabilities</h3>
         <div id="capabilities-list">
           <!-- Capabilities will be loaded here -->
@@ -26,12 +49,12 @@
         </div>
       </section>
 
-      <section id="register-container">
-        <h3>Register Your Expertise</h3>
+      <section id="register-container" class="auth-required hidden">
+        <h3 id="registration-title">Register Your Expertise</h3>
         <form id="register-form">
-          <div class="form-group">
-            <label for="email">Consultant Email:</label>
-            <input type="email" id="email" required placeholder="your-email@slalom.com" />
+          <div id="target-email-group" class="form-group lead-only hidden">
+            <label for="target-email">Consultant Email:</label>
+            <input type="email" id="target-email" placeholder="consultant@slalom.com" />
           </div>
           <div class="form-group">
             <label for="capability">Select Capability:</label>
@@ -40,7 +63,7 @@
               <!-- Capability options will be loaded here -->
             </select>
           </div>
-          <button type="submit">Register Expertise</button>
+          <button id="register-submit" type="submit">Request Expertise</button>
         </form>
         <div id="message" class="hidden"></div>
       </section>
