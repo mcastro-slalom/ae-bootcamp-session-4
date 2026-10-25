@@ -15,22 +15,36 @@ A FastAPI application that enables Slalom consultants to register their capabili
 
 ## Getting Started
 
-1. Install the dependencies:
+1. From the repository root, install the dependencies:
 
    ```
-   pip install fastapi uvicorn
+   pip install -r requirements.txt
    ```
 
-2. Run the application:
+2. Provision at least one practice lead and one consultant account. Accounts are stored in `src/auth_users.json` with PBKDF2-SHA256 password hashes; the file is ignored by Git.
 
    ```
-   python app.py
+   python src/manage_users.py lead@slalom.com practice_lead --practice-areas Technology,Strategy,Operations
+   python src/manage_users.py consultant@slalom.com consultant
    ```
 
-3. Open your browser and go to:
+   The command prompts for each password and confirmation. Practice leads can be assigned one or more practice areas, or `*` for all areas.
+
+3. Set a stable session secret and run the application:
+
+   ```sh
+   export SESSION_SECRET="$(openssl rand -hex 32)"
+   uvicorn app:app --app-dir src --reload
+   ```
+
+4. Open your browser and go to:
    - API documentation: http://localhost:8000/docs
    - Alternative documentation: http://localhost:8000/redoc
    - Capabilities Dashboard: http://localhost:8000/
+
+For HTTPS deployments, set `COOKIE_SECURE=true`. Successful logins and capability changes are recorded in the ignored `src/auth_audit.jsonl` file. Consultants can request capability registrations; an authorized practice lead must approve them. Leads can update capacity, skill levels, and certifications, and view a summary report for their assigned practice areas.
+
+This exercise uses a local JSON account store and in-memory capability data. It does not include email verification, login rate limiting, durable capability storage, or enterprise SSO. Use a managed identity provider and persistent database before exposing it as a production service.
 
 ## API Endpoints
 

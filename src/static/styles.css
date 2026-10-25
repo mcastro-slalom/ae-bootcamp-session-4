@@ -33,6 +33,71 @@ header {
   flex-wrap: wrap;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#user-identity {
+  font-size: 0.9rem;
+}
+
+#login-button,
+#logout-button,
+.action-btn {
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #fff;
+  background: #174f78;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#logout-button,
+.delete-btn {
+  background: #8b2d26;
+}
+
+.approve-btn {
+  background: #246443;
+}
+
+#auth-dialog {
+  width: min(92vw, 420px);
+  margin: auto;
+  border: 0;
+  border-radius: 6px;
+  padding: 28px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+#auth-dialog::backdrop {
+  background: rgba(12, 27, 39, 0.65);
+}
+
+#login-form {
+  display: grid;
+  gap: 12px;
+}
+
+#login-form h2 {
+  color: #003d7a;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#login-form small {
+  color: #555;
+}
+
 .mascot {
   width: 80px;
   height: 80px;
@@ -240,6 +305,116 @@ button[type="submit"]:hover {
   display: none;
 }
 
+.pending-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #9a6425;
+}
+
+.requirements-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #d6e0e7;
+}
+
+.requirements-form label {
+  display: grid;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.requirements-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.requirements-form textarea,
+.training-request-form textarea {
+  width: 100%;
+  min-height: 88px;
+  padding: 9px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font: inherit;
+  resize: vertical;
+}
+
+.requirements-form button {
+  justify-self: start;
+  border: 0;
+  border-radius: 4px;
+  padding: 9px 12px;
+  color: #fff;
+  background: #174f78;
+  cursor: pointer;
+}
+
+.report-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.report-table th,
+.report-table td {
+  padding: 8px;
+  border-bottom: 1px solid #d6e0e7;
+  white-space: nowrap;
+}
+
+.training-request-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.training-request-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.training-request-form button {
+  justify-self: start;
+  border: 0;
+  border-radius: 4px;
+  padding: 9px 12px;
+  color: #fff;
+  background: #174f78;
+  cursor: pointer;
+}
+
+.training-list li {
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.training-list li > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.training-list p {
+  margin: 4px 0;
+}
+
+.training-list .action-btn {
+  flex: 0 0 auto;
+}
+
 footer {
   text-align: center;
   margin-top: 30px;
@@ -290,6 +465,16 @@ footer {
   .header-content {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #user-identity {
+    width: 100%;
+    overflow-wrap: anywhere;
   }
   
   .mascot {
